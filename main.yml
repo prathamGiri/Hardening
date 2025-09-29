@@ -4,9 +4,14 @@
   hosts: test-vms
   gather_facts: no
   become: true
-  roles:
-    - kernel_module_check
-    
+  vars_files:
+    "./vars/kernel_module_names.yml"
+
+  tasks:
+    - name: Kernel module check 
+      include_tasks: "./tasks/kernel_module_check.yml"
+      loop: "{{ module_name }}"
+
     
 
 
