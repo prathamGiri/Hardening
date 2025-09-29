@@ -1,0 +1,9 @@
+module_name:
+ - cramfs
+ - freevxfs
+ - hfs 
+ - udf
+ - hfsplus
+ - jffs2
+ - squashfs
+ - usb-storage
