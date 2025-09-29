@@ -1,0 +1,14 @@
+---
+
+- name: Hardening check
+  hosts: test-vms
+  gather_facts: no
+  become: true
+  tasks:
+    - name: Check availability of Kernel modules
+      ansible.builtin.shell: "modinfo {{ kernel-module }}"
+      register: modcheck-res
+
+    - name: Print result
+      debug:
+        var: modcheck-res
