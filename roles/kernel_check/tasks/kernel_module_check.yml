@@ -1,12 +1,12 @@
 - name: Check availability of Kernel modules
-  ansible.builtin.shell: "modinfo {{ item }}"
+  ansible.builtin.command: "modinfo {{ item }}"
   register: modres
   failed_when: false
 
 - name: modres result check
   set_fact: 
     module_available: "{{ 'filename' in modres.stdout or modres.rc == 0 }}"
-  
+
 - name: Save in csv file 
   lineinfile: 
     path: "/home/pratham/hardening/csv_files/module_availability.csv"
